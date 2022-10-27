@@ -1,4 +1,3 @@
-from copyreg import pickle
 import random
 from dictionary import wordle_dictionary 
 
