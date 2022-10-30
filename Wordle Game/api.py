@@ -1,19 +1,22 @@
 import pygame
 from sys import exit
 
+#initialize game window
 pygame.init()
-
-screen = pygame.display.set_mode((800, 800))
+screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Wordle!")
 icon = pygame.image.load("assets/icon.png")
 pygame.display.set_icon(icon)
 
-background = pygame.image.load("assets/tiles.png")
-background_rect = background.get_rect(center = (400, 300))
 
+#colors thats will be used
 Green = "#538d4e"
 Yellow = "#b59f3b"
 Grey = "#3a3a3c"
+Black = "#121213"
+White = "#ffffff"
+
+img = pygame.image.load("assets/title.png").convert()
 
 def main():
       clock = pygame.time.Clock()
@@ -23,8 +26,8 @@ def main():
                         pygame.quit()
                         exit()
             #draw all the elements required to make a wordle api
-            screen.fill("#121213")
-            screen.blit(background, background_rect)
+            screen.fill(Black)
+            screen.blit(img, (310, 25))
             #update everything
             pygame.display.update()
             clock.tick(60)
