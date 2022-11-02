@@ -84,7 +84,7 @@ class Letters:
 def victory_screen():
       TextSur = font.render("You guessed the Wordle", True, White)
       TextRect = TextSur.get_rect() 
-      TextRect.center = (350, 200)
+      TextRect.center = (400, 250)
       screen.fill(Black)
       screen.blit(TextSur, TextRect)
 
@@ -116,7 +116,6 @@ def draw_outcome(letter, i, wordle, answer):
             time.sleep(0.3)
             pygame.display.update()
 
-
 def main():
       global GreenTiles
       clock = pygame.time.Clock()
@@ -137,11 +136,13 @@ def main():
                         exit()
 
                   if event.type == pygame.KEYDOWN:
+                        #remove letter form string
                         if event.key == pygame.K_BACKSPACE:
                               if letter.x >= 1:
                                     letter.str[letter.y][letter.x - 1] = ""
                                     letter.x -= 1
 
+                        #events when you press eneter
                         if event.key == pygame.K_RETURN:
                               if letter.x == 5 and letter.y < 6 and "".join(letter.str[letter.y]) in wordle_dictionary:
                                     draw_outcome(letter, letter.y, list(currWordle), letter.str[letter.y])
@@ -154,6 +155,7 @@ def main():
                                     time.sleep(0.5)
                                     
                         key_pressed = event.unicode.upper()
+                        #append keys to input string
                         if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":
                               if letter.x < letter.width:
                                     letter.str[letter.y][letter.x] = key_pressed
@@ -171,8 +173,6 @@ def main():
             #update everything
             pygame.display.update()
             clock.tick(60)
-
-
 
 if __name__ == '__main__':
       main()
