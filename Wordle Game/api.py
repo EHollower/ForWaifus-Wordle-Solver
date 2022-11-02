@@ -27,10 +27,12 @@ font = pygame.font.SysFont('Clear Sans', 40)
 #matrix in whitch it is stored every color for each tile on the screen
 colorTiles = [[Greyy for i in range(10)] for i in range(10)]
 
-#count number of green tiles this time
+#global variables
 greenTiles = 0
+guesses = 0
 
 #class will be used for drawing each tile on the screen
+
 class Tiles:
       def __init__(self, width, height):
             self.width, self.height = width, height
@@ -79,7 +81,15 @@ class Letters:
                         TextRect.center = (x + 30, y + 30)
                         screen.blit(TextSur, TextRect)
 
-def draw_outcome(letter, i, wordle, answer, greenTiles):
+def victory_screen():
+      TextSur = font.render("You guessed the Wordle", True, White)
+      TextRect = TextSur.get_rect() 
+      TextRect.center = (350, 200)
+      screen.fill(Black)
+      screen.blit(TextSur, TextRect)
+
+def draw_outcome(letter, i, wordle, answer):
+      global greenTiles
       n = len(wordle)
       greenTiles = 0
       for j in range(n):
@@ -107,20 +117,14 @@ def draw_outcome(letter, i, wordle, answer, greenTiles):
             pygame.display.update()
 
 
-def victory_screen():
-      TextSur = font.render("YOU Guessed the Wordle\nPlay again?", True, White)
-      TextRect = TextSur.get_rect()
-      TextRect.center = (400, 300)
-      screen.blit(TextSur, TextRect)
-      pygame.display.update()
-
 def main():
+      global GreenTiles
       clock = pygame.time.Clock()
       table = Tiles(5, 6)
       letter = Letters(table.mat, 5, 6)
       currWordle = random.choice(wordle_dictionary)
       print(currWordle)
-      while True:
+      while greenTiles != letter.width:
             #draw all the elements required to make a wordle api
             screen.fill(Black)
             screen.blit(img, (310, 25))
@@ -140,7 +144,7 @@ def main():
 
                         if event.key == pygame.K_RETURN:
                               if letter.x == 5 and letter.y < 6 and "".join(letter.str[letter.y]) in wordle_dictionary:
-                                    draw_outcome(letter, letter.y, list(currWordle), letter.str[letter.y], greenTiles)
+                                    draw_outcome(letter, letter.y, list(currWordle), letter.str[letter.y])
                                     letter.y += 1
                                     letter.x = 0
                               else:
@@ -154,15 +158,21 @@ def main():
                               if letter.x < letter.width:
                                     letter.str[letter.y][letter.x] = key_pressed
                                     letter.x += 1
-                                    
-            if greenTiles == letter.width:
-                  print("IN")
-                  victory_screen()
-                  return
             #update everything
             pygame.display.update()
             clock.tick(60)
-      return
+
+      while True:
+            victory_screen()
+            for event in pygame.event.get():
+                  if event.type == pygame.QUIT:
+                        pygame.quit()
+                        exit()
+            #update everything
+            pygame.display.update()
+            clock.tick(60)
+
+
 
 if __name__ == '__main__':
       main()
