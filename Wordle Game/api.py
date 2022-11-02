@@ -15,6 +15,7 @@ pygame.display.set_icon(icon)
 Green = "#538d4e"
 Yellow = "#b59f3b"
 Grey = "#3a3a3c"
+Greyy = "#3a3a3d"
 Black = "#121213"
 White = "#ffffff"
 Red = "#cc0000"
@@ -24,7 +25,10 @@ img = pygame.image.load("assets/title.png").convert()
 font = pygame.font.SysFont('Clear Sans', 40)
 
 #matrix in whitch it is stored every color for each tile on the screen
-colorTiles = [[Grey for i in range(10)] for i in range(10)]
+colorTiles = [[Greyy for i in range(10)] for i in range(10)]
+
+#count number of green tiles this time
+greenTiles = 0
 
 #class will be used for drawing each tile on the screen
 class Tiles:
@@ -47,7 +51,7 @@ class Tiles:
                         x, y = self.mat[i][j][0], self.mat[i][j][1]
                         color = colorTiles[i][j]
                         tile = pygame.Rect(x, y, 60, 60)
-                        if color == Grey:
+                        if color == Greyy:
                               pygame.draw.rect(screen, color, tile, 2)
                               continue
                         pygame.draw.rect(screen, color, tile)
@@ -58,7 +62,6 @@ class Tiles:
                   color = Red
                   tile = pygame.Rect(x, y, 60, 60)
                   pygame.draw.rect(screen, color, tile)
-
 
 class Letters:
       def __init__(self, mat, width, height):
@@ -76,30 +79,40 @@ class Letters:
                         TextRect.center = (x + 30, y + 30)
                         screen.blit(TextSur, TextRect)
 
-      # def draw_outcome(self, color, y, Wordle):
-      #       for x in range(self.width):
-      #             if Wordle[x] == self.str[y][x]:
-      #                   self.color[y][x] = Green
-      #                   color[y][x] = Green
-      #                   temp = list(Wordle)
-      #                   temp[x] = '?'
-      #                   Wordle = "".join(temp)
+def draw_outcome(letter, i, wordle, answer, greenTiles):
+      n = len(wordle)
+      greenTiles = 0
+      for j in range(n):
+            if answer[j] == wordle[j]:
+                  colorTiles[i][j] = Green
+                  wordle[j] = '?'
+                  greenTiles += 1
+      
+      for j in range(n):
+            if answer[j] in wordle and colorTiles[i][j] == Greyy:
+                  colorTiles[i][j] = Yellow
+            elif colorTiles[i][j] == Greyy:
+                  colorTiles[i][j] = Grey
 
-      #       for x in range(self.width):
-      #             if self.str[y][x] in Wordle and self.color[y][x] == Black:
-      #                   self.color[y][x] = Yellow
-      #                   color[y][x] = Yellow
-      #             elif self.color[y][x] == Black:
-      #                   self.color[y][x] = Grey
-      #                   color[y][x] = Grey
+      for j in range(n):
+            x, y = letter.mat[i][j][0], letter.mat[i][j][1]
+            color = colorTiles[i][j]
+            tile = pygame.Rect(x, y, 60, 60)
+            pygame.draw.rect(screen, color, tile)
+            TextSur = font.render(letter.str[i][j], True, White)
+            TextRect = TextSur.get_rect()
+            TextRect.center = (x + 30, y + 30)
+            screen.blit(TextSur, TextRect)
+            time.sleep(0.3)
+            pygame.display.update()
 
-      #       for x in range(self.width):
-      #             pygame.draw.rect(screen, self.color[y][x], pygame.Rect(self.mat[y][x][0], self.mat[y][x][1], 60, 60))
-      #             text = font.render(self.str[y][x], True, White, self.color[y][x])
-      #             screen.blit(text, (self.mat[y][x][0] + 20, self.mat[y][x][1] + 15))
-      #             pygame.display.update()
-      #             time.sleep(0.3)
-      #       return
+
+def victory_screen():
+      TextSur = font.render("YOU Guessed the Wordle\nPlay again?", True, White)
+      TextRect = TextSur.get_rect()
+      TextRect.center = (400, 300)
+      screen.blit(TextSur, TextRect)
+      pygame.display.update()
 
 def main():
       clock = pygame.time.Clock()
@@ -127,6 +140,7 @@ def main():
 
                         if event.key == pygame.K_RETURN:
                               if letter.x == 5 and letter.y < 6 and "".join(letter.str[letter.y]) in wordle_dictionary:
+                                    draw_outcome(letter, letter.y, list(currWordle), letter.str[letter.y], greenTiles)
                                     letter.y += 1
                                     letter.x = 0
                               else:
@@ -140,7 +154,11 @@ def main():
                               if letter.x < letter.width:
                                     letter.str[letter.y][letter.x] = key_pressed
                                     letter.x += 1
-                        
+                                    
+            if greenTiles == letter.width:
+                  print("IN")
+                  victory_screen()
+                  return
             #update everything
             pygame.display.update()
             clock.tick(60)
