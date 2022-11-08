@@ -15,7 +15,7 @@ pygame.display.set_icon(icon)
 colorTiles = [[colors_arr[6] for i in range(10)] for i in range(10)]
 
 def main():
-      tiles = Tiles(1, 1)
+      tiles = Tiles(5, 6)
       clock = pygame.time.Clock()
       while True:
             screen.fill(colors_arr[1])
