@@ -8,7 +8,7 @@ from sys import exit
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Wordle!")
-icon = pygame.image.load("assets/icon.png")
+icon = pygame.image.load("assets/imgs/icon.png")
 pygame.display.set_icon(icon)
 
 #colors thats will be used
@@ -21,7 +21,7 @@ White = "#ffffff"
 Red = "#cc0000"
 
 #text that will be used in game window
-img = pygame.image.load("assets/title.png").convert()
+img = pygame.image.load("assets/imgs/title.png").convert()
 font = pygame.font.SysFont('Clear Sans', 40)
 
 #matrix in whitch it is stored every color for each tile on the screen
