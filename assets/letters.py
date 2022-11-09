@@ -26,9 +26,21 @@ class Letters:
 
       #will draw all the current letters pressed so far
       def draw(self, screen, font):
-            for i in range(self.height):
-                  for j in range(self.width):
+            height, width = self.height, self.width
+            for i in range(height):
+                  for j in range(width):
                         x, y = self.coord[i][j][0], self.coord[i][j][1]
+                        TextSur = font.render(self.str[i][j], True, colors_arr[0])
+                        TextRect = TextSur.get_rect()
+                        TextRect.center = (x + 30, y + 30)
+                        screen.blit(TextSur, TextRect)
+
+      #will be used to draw the letters when we are using animations.worng_animation
+      def draw_offset(self, screen, font, offset):
+            height, width = self.height, self.width
+            for i in range(height):
+                  for j in range(width):
+                        x, y = self.coord[i][j][0] + offset[i][j][0], self.coord[i][j][1] + offset[i][j][1]
                         TextSur = font.render(self.str[i][j], True, colors_arr[0])
                         TextRect = TextSur.get_rect()
                         TextRect.center = (x + 30, y + 30)

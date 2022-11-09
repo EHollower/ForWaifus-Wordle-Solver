@@ -1,4 +1,4 @@
-#colors thats will be used trought the playing of the game
+#colors thats will be used throughout the playing of the game
 Green = "#538d4e"
 Yellow = "#b59f3b"
 Grey1 = "#3a3a3c"

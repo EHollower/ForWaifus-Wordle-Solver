@@ -40,6 +40,9 @@ def main():
                   if event.type ==  pygame.KEYDOWN:
                         if event.key == pygame.K_BACKSPACE:
                               letters.delete_letter()
+                        
+                        if event.key == pygame.K_RETURN:
+                              animations.worng_animation(tiles, letters)
 
                         key_pressed = event.unicode.upper()
                         if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":

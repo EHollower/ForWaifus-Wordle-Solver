@@ -34,3 +34,52 @@ class Animations:
                               pygame.draw.rect(self.screen, colorTile[i][j], tile)
                   pygame.display.update()
                   time.sleep(0.008)
+
+      #used for drawing the aniamtion when an invalid move is made troughout 
+      def worng_animation(self, tiles, letters):
+            height, width = tiles.height, tiles.width
+            offset = [[[0, 0] for i in range(width)] for i in range(height)]
+            for k in range(3):
+                  for rep in range(10):
+                        self.screen.fill(colors_arr[1])
+                        self.screen.blit(self.title, (300, 25))
+                        for i in range(height):
+                              for j in range(width):
+                                    if i == letters.y:
+                                          offset[i][j][0], offset[i][j][1] = (rep + 1) * 1, 0 
+                                          x, y = tiles.coord[i][j][0] + (rep + 1) * 1, tiles.coord[i][j][1]
+                                          tile = pygame.Rect(x, y, 60,60)
+                                          pygame.draw.rect(self.screen, colors_arr[6], tile, 2)
+                                          continue
+                                    offset[i][j][0], offset[i][j][1] = 0, 0
+                                    x, y = tiles.coord[i][j][0], tiles.coord[i][j][1]
+                                    tile = pygame.Rect(x, y, 60, 60)
+                                    if colorTile[i][j] == colors_arr[7] or colorTile[i][j] == colors_arr[6]:
+                                          pygame.draw.rect(self.screen, colorTile[i][j], tile, 2)
+                                          continue
+                                    pygame.draw.rect(self.screen, colorTile[i][j], tile)
+                        letters.draw_offset(self.screen, self.font, offset)
+                        pygame.display.update()
+                        time.sleep(0.008)
+
+                  for rep in range(10):
+                        self.screen.fill(colors_arr[1])
+                        self.screen.blit(self.title, (300, 25))
+                        for i in range(height):
+                              for j in range(width):
+                                    if i == letters.y:
+                                          offset[i][j][0], offset[i][j][1] = -((rep + 1) * 1), 0 
+                                          x, y = tiles.coord[i][j][0] - (rep + 1) * 1, tiles.coord[i][j][1]
+                                          tile = pygame.Rect(x, y, 60,60)
+                                          pygame.draw.rect(self.screen, colors_arr[6], tile, 2)
+                                          continue
+                                    offset[i][j][0], offset[i][j][1] = 0, 0
+                                    x, y = tiles.coord[i][j][0], tiles.coord[i][j][1]
+                                    tile = pygame.Rect(x, y, 60, 60)
+                                    if colorTile[i][j] == colors_arr[7] or colorTile[i][j] == colors_arr[6]:
+                                          pygame.draw.rect(self.screen, colorTile[i][j], tile, 2)
+                                          continue
+                                    pygame.draw.rect(self.screen, colorTile[i][j], tile)
+                        letters.draw_offset(self.screen, self.font, offset)
+                        pygame.display.update()
+                        time.sleep(0.008)
