@@ -20,8 +20,8 @@ class Animations:
                   for i in range(height):
                         for j in range(width):
                               if i == letters.y and j == letters.x:
-                                    if i % 2 == 0: dx += 1
-                                    if i % 2 == 0: dy += 1
+                                    dx += 1
+                                    dy += 1
                                     x, y = tiles.coord[i][j][0] - rep * 2, tiles.coord[i][j][1] - rep * 2
                                     tile = pygame.Rect(x, y, dx, dy)
                                     pygame.draw.rect(self.screen, colorTile[i][j], tile, 2)
@@ -33,4 +33,4 @@ class Animations:
                                     continue
                               pygame.draw.rect(self.screen, colorTile[i][j], tile)
                   pygame.display.update()
-                  #.sleep(0.008)
+                  time.sleep(0.008)

@@ -1,4 +1,5 @@
 import pygame
+import random
 from dictionary import wordle_dictionary
 from assets.colors import colors_arr
 from assets.tiles import Tiles
@@ -19,6 +20,8 @@ title = pygame.image.load("assets/imgs/title.png").convert()
 font = pygame.font.SysFont('Clear Sans', 40)
 
 def main():
+      wordle = random.choice(wordle_dictionary)
+      print(wordle)
       animations = Animations(screen, title, font)
       tiles = Tiles(5, 6)
       letters = Letters(tiles.coord, 5, 6)
