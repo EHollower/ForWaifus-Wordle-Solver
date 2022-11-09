@@ -19,7 +19,7 @@ title = pygame.image.load("assets/imgs/title.png").convert()
 font = pygame.font.SysFont('Clear Sans', 40)
 
 def main():
-      animations = Animations(screen, title)
+      animations = Animations(screen, title, font)
       tiles = Tiles(5, 6)
       letters = Letters(tiles.coord, 5, 6)
       clock = pygame.time.Clock()
@@ -40,6 +40,7 @@ def main():
 
                         key_pressed = event.unicode.upper()
                         if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":
+                              animations.insert_animation(tiles, letters)
                               letters.insert_letter(key_pressed)
                         
 
