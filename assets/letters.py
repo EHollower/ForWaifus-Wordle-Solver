@@ -1,6 +1,6 @@
 import pygame
 import time
-from assets.colors import colors_arr
+from assets.colors import colors_arr, colorTile
 
 #classed will be used draw the letters pressed so far
 class Letters:
@@ -12,8 +12,17 @@ class Letters:
             self.str = [["" for i in range(self.width)] for i in range(self.height)]
 
       #inserting a new letter
-      def insert_letter(self, ic, jc, letter):
-            self.str[ic][jc] = letter
+      def insert_letter(self, letter):
+            if self.x < self.width:
+                  self.str[self.y][self.x] = letter
+                  colorTile[self.y][self.x] = colors_arr[6]
+                  self.x += 1
+
+      def delete_letter(self):
+            if self.x >= 1:
+                  self.x -= 1
+                  self.str[self.y][self.x] = ""
+                  colorTile[self.y][self.x] = colors_arr[7]
 
       #will draw all the current letters pressed so far
       def draw(self, screen, font):
