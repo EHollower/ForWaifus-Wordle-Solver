@@ -30,10 +30,10 @@ class Letters:
             for i in range(height):
                   for j in range(width):
                         x, y = self.coord[i][j][0], self.coord[i][j][1]
-                        TextSur = font.render(self.str[i][j], True, colors_arr[0])
-                        TextRect = TextSur.get_rect()
-                        TextRect.center = (x + 30, y + 30)
-                        screen.blit(TextSur, TextRect)
+                        textsur = font.render(self.str[i][j], True, colors_arr[0])
+                        textrect = textsur.get_rect()
+                        textrect.center = (x + 30, y + 30)
+                        screen.blit(textsur, textrect)
 
       #will be used to draw the letters when we are using animations.worng_animation
       def draw_offset(self, screen, font, offset):
@@ -41,7 +41,7 @@ class Letters:
             for i in range(height):
                   for j in range(width):
                         x, y = self.coord[i][j][0] + offset[i][j][0], self.coord[i][j][1] + offset[i][j][1]
-                        TextSur = font.render(self.str[i][j], True, colors_arr[0])
-                        TextRect = TextSur.get_rect()
-                        TextRect.center = (x + 30, y + 30)
-                        screen.blit(TextSur, TextRect)
+                        textsur = font.render(self.str[i][j], True, colors_arr[0])
+                        textrect = textsur.get_rect()
+                        textrect.center = (x + 30, y + 30)
+                        screen.blit(textsur, textrect)
