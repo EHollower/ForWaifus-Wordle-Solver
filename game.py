@@ -36,13 +36,15 @@ def main():
                   if event.type == pygame.QUIT:
                         pygame.quit()
                         exit()
-
+                  
                   if event.type ==  pygame.KEYDOWN:
                         if event.key == pygame.K_BACKSPACE:
                               letters.delete_letter()
                         
                         if event.key == pygame.K_RETURN:
+                              #pygame.event.set_blocked(pygame.KEYDOWN)
                               animations.worng_animation(tiles, letters)
+                              #pygame.event.set_allowed(pygame.KEYDOWN)
 
                         key_pressed = event.unicode.upper()
                         if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":

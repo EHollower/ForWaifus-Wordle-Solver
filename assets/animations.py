@@ -1,5 +1,4 @@
 import pygame
-import time
 from assets.colors import colors_arr, colorTile
 
 #this class will be used to draw the animation of the Worlde game
@@ -33,7 +32,7 @@ class Animations:
                                     continue
                               pygame.draw.rect(self.screen, colorTile[i][j], tile)
                   pygame.display.update()
-                  time.sleep(0.008)
+                  pygame.time.wait(8)
 
       #used for drawing the aniamtion when an invalid move is made troughout 
       def worng_animation(self, tiles, letters):
@@ -49,7 +48,7 @@ class Animations:
                                           offset[i][j][0], offset[i][j][1] = (rep + 1) * 1, 0 
                                           x, y = tiles.coord[i][j][0] + (rep + 1) * 1, tiles.coord[i][j][1]
                                           tile = pygame.Rect(x, y, 60,60)
-                                          pygame.draw.rect(self.screen, colors_arr[6], tile, 2)
+                                          pygame.draw.rect(self.screen, colorTile[i][j], tile, 2)
                                           continue
                                     offset[i][j][0], offset[i][j][1] = 0, 0
                                     x, y = tiles.coord[i][j][0], tiles.coord[i][j][1]
@@ -60,7 +59,7 @@ class Animations:
                                     pygame.draw.rect(self.screen, colorTile[i][j], tile)
                         letters.draw_offset(self.screen, self.font, offset)
                         pygame.display.update()
-                        time.sleep(0.008)
+                        pygame.time.wait(5)
 
                   for rep in range(10):
                         self.screen.fill(colors_arr[1])
@@ -71,7 +70,7 @@ class Animations:
                                           offset[i][j][0], offset[i][j][1] = -((rep + 1) * 1), 0 
                                           x, y = tiles.coord[i][j][0] - (rep + 1) * 1, tiles.coord[i][j][1]
                                           tile = pygame.Rect(x, y, 60,60)
-                                          pygame.draw.rect(self.screen, colors_arr[6], tile, 2)
+                                          pygame.draw.rect(self.screen, colorTile[i][j], tile, 2)
                                           continue
                                     offset[i][j][0], offset[i][j][1] = 0, 0
                                     x, y = tiles.coord[i][j][0], tiles.coord[i][j][1]
@@ -82,4 +81,4 @@ class Animations:
                                     pygame.draw.rect(self.screen, colorTile[i][j], tile)
                         letters.draw_offset(self.screen, self.font, offset)
                         pygame.display.update()
-                        time.sleep(0.008)
+                        pygame.time.wait(5)
