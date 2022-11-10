@@ -1,7 +1,7 @@
 import pygame
 import random
 from dictionary import wordle_dictionary
-from assets.colors import colors_arr
+from assets.colors import colors_arr, colorTile
 from assets.tiles import Tiles
 from assets.letters import Letters
 from assets.animations import Animations
@@ -19,19 +19,21 @@ title = pygame.image.load("assets/imgs/title.png").convert()
 #font of each letter
 font = pygame.font.SysFont('Clear Sans', 40)
 
+#classes the will be used to draw/animate the Wordle game
+animations = Animations(screen, title, font)
+tiles = Tiles(5, 6)
+letters = Letters(tiles.coord, 5, 6)
+
 def main():
       wordle = random.choice(wordle_dictionary)
       print(wordle)
-      animations = Animations(screen, title, font)
-      tiles = Tiles(5, 6)
-      letters = Letters(tiles.coord, 5, 6)
       clock = pygame.time.Clock()
+      last = 0
       while True:
             screen.fill(colors_arr[1])
             screen.blit(title, (300, 25))
-            tiles.draw(screen)
+            tiles.draw_table(screen)
             letters.draw(screen, font)
-
             for event in pygame.event.get():
                   if event.type == pygame.QUIT:
                         pygame.quit()
@@ -42,9 +44,10 @@ def main():
                               letters.delete_letter()
                         
                         if event.key == pygame.K_RETURN:
-                              #pygame.event.set_blocked(pygame.KEYDOWN)
-                              animations.worng_animation(tiles, letters)
-                              #pygame.event.set_allowed(pygame.KEYDOWN)
+                              now = pygame.time.get_ticks()
+                              if now - last >= 300:
+                                    animations.worng_animation(tiles, letters)
+                                    last = pygame.time.get_ticks()
 
                         key_pressed = event.unicode.upper()
                         if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":

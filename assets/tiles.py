@@ -18,14 +18,17 @@ class Tiles:
                         else:
                               self.coord[i][j][0], self.coord[i][j][1] = self.coord[i][j - 1][0] + 65, self.coord[i][j - 1][1]
 
+      #function will be used to draw a tile of the Wordle table
+      def draw_tile(self, screen, x, y, sz, color):
+            tile = pygame.Rect(x, y, sz, sz)
+            if color == colors_arr[7] or color == colors_arr[6]:
+                  pygame.draw.rect(screen, color, tile, 2)
+                  return
+            pygame.draw.rect(screen, color, tile)
+
       #function will be used to draw each tile of the Wordle table
-      def draw(self, screen):
+      def draw_table(self, screen):
             height, width = self.height, self.width
             for i in range(height):
                   for j in range(width):
-                        x, y = self.coord[i][j][0], self.coord[i][j][1]
-                        tile = pygame.Rect(x, y, 60, 60)
-                        if colorTile[i][j] == colors_arr[7] or colorTile[i][j] == colors_arr[6]:
-                              pygame.draw.rect(screen, colorTile[i][j], tile, 2)
-                              continue
-                        pygame.draw.rect(screen, colorTile[i][j], tile)
+                        self.draw_tile(screen, self.coord[i][j][0], self.coord[i][j][1], 60, colorTile[i][j])
