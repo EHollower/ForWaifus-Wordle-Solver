@@ -12,10 +12,12 @@ class Animations:
       def screen_init(self):
             self.screen.fill(colors_arr[1])
             self.screen.blit(self.title, (300, 25))
+
             textsur = self.font.render("Number of guesses:", True, colors_arr[0])
             textrect = textsur.get_rect()
             textrect.center = (370, 530)
             self.screen.blit(textsur, textrect)
+            
             cntsur = self.font.render(str(self.count), True, colors_arr[0])
             cntrect = cntsur.get_rect()
             cntrect.center = (370, 570)
