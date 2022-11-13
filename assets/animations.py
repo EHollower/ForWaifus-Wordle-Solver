@@ -1,5 +1,6 @@
 import pygame
 from assets.colors import colors_arr, colorTemp, colorTile
+from sys import exit
 
 #this class will be used to draw the animation of the Worlde game
 class Animations:
