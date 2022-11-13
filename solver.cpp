@@ -98,7 +98,7 @@ int main() {
       f.open("communication.txt");
       f >> patern; n = newSet(m, patern, cuvoptim);
       f.close();
-      while(patern != 242) {
+      while(n) {
             oldN = n, cuvoptim = optimalWordFind(n), ++ct;
             g.open("communication.txt");
             g << cuvoptim;
@@ -108,5 +108,8 @@ int main() {
             f >> patern; n = newSet(n, patern, cuvoptim);
             //cout << patern << " " << n << "\n";
             f.close();
+            if(patern == 242) {
+                  break;
+            }
       }
 }
