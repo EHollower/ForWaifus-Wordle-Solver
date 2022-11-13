@@ -55,7 +55,7 @@ def outcome(wordle, guess):
 def main():
       open('communication.txt', 'w').close()
       wordle = random.choice(wordle_dictionary)
-      #print(wordle)
+      #pprint(wordle)
       clock = pygame.time.Clock()
       subprocess.Popen("solver", shell=True)
       while run:
