@@ -45,7 +45,6 @@ def outcome(wordle, guess):
                   continue
             colorTemp[i] = colors_arr[5]
             code = code * 3
-      print(code)
       g = open("communication.txt", "w")
       g.write(str(code))
       g.close()
@@ -56,7 +55,7 @@ def outcome(wordle, guess):
 def main():
       open('communication.txt', 'w').close()
       wordle = random.choice(wordle_dictionary)
-      print(wordle)
+      #print(wordle)
       clock = pygame.time.Clock()
       subprocess.Popen("solver", shell=True)
       while run:

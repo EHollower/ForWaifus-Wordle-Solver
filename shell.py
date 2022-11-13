@@ -83,8 +83,7 @@ def main():
             clock.tick(60)
 
       while True:
-            screen.fill(colors_arr[1])
-            screen.blit(title, (300, 25))
+            animations.screen_init()
 
             textsur = font.render("Total number of guesses:", True, colors_arr[0])
             textrect = textsur.get_rect()
