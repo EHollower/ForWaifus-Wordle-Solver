@@ -13,10 +13,10 @@ string v[15000], s[15000];
 int paternFind(string word, string guess) {
       int freq[26];
       memset(freq, 0, sizeof(freq));
-      int cod = 0, n = word.length();
+      int cod = 0, n = 5;
 
       for(int i = 0;i < n;i++)
-            freq[word[i] - 'a'] = 1;
+            freq[word[i] - 'A'] = 1;
 
       for(int i = 0;i < n;i++) {
             //green
@@ -25,7 +25,7 @@ int paternFind(string word, string guess) {
                   continue;
             }
             //yellow
-            if(freq[guess[i] - 'a']) {
+            if(freq[guess[i] - 'A']) {
                   cod = cod * 3 + 1;
                   continue;
             }
@@ -70,7 +70,7 @@ string optimalWordFind(int n) {
 }
 
 int newSet(int n, int pattern, string cuvoptim) {
-      int newN = 0;
+      int newN;
       for(int j = 1;j <= n;j++) {
             int cod = paternFind(v[j], cuvoptim);
             if(cod == pattern) {
@@ -98,7 +98,7 @@ int main() {
       f.open("communication.txt");
       f >> patern; n = newSet(m, patern, cuvoptim);
       f.close();
-      while(patern != 242){
+      while(patern != 242) {
             oldN = n, cuvoptim = optimalWordFind(n), ++ct;
             g.open("communication.txt");
             g << cuvoptim;
@@ -106,6 +106,7 @@ int main() {
             std::this_thread::sleep_for(std::chrono::milliseconds(5000));
             f.open("communication.txt");
             f >> patern; n = newSet(n, patern, cuvoptim);
-            if(patern == 242) break;
+            //cout << patern << " " << n << "\n";
+            f.close();
       }
 }

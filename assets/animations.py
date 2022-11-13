@@ -23,12 +23,19 @@ class Animations:
             cntrect.center = (370, 570)
             self.screen.blit(cntsur, cntrect)
 
+      def event(self):
+             for event in pygame.event.get():
+                  if event.type == pygame.QUIT:
+                        pygame.quit()
+                        exit()  
+
       #this funtion will be used to draw the animation when you insert a new letter
       def insert_animation(self, tiles, letters):
             height, width = tiles.height, tiles.width
             lx, ly = letters.x, letters.y
             #zoom out
             for rep in range(10):
+                  self.event()   
                   self.screen_init()
                   for i in range(height):
                         for j in range(width):
@@ -41,7 +48,7 @@ class Animations:
 
                   letters.draw(self.screen, self.font)
                   pygame.display.update()
-                  pygame.time.delay(5)
+                  pygame.time.Clock().tick(200)
 
       #this will draw the animation when a word is guessed
       def outcome_animation(self, tiles, letters):
@@ -51,6 +58,7 @@ class Animations:
             #zoom in
             for lx in range(width):
                   for rep in range(30):
+                        self.event() 
                         self.screen_init()
                         for i in range(height):
                               for j in range(width):
@@ -63,10 +71,13 @@ class Animations:
 
                         letters.draw(self.screen, self.font)
                         pygame.display.update()
-                        pygame.time.delay(5)
+                        pygame.time.Clock().tick(200)
+
+
                   
                   #zoom out
                   for rep in range(30):
+                        self.event()
                         self.screen_init()
                         for i in range(height):
                               for j in range(width):
@@ -82,9 +93,8 @@ class Animations:
                                     letters.draw_letter(self.screen, x, y, txt, self.font)
 
                         pygame.display.update()
-                        pygame.time.delay(5)
+                        pygame.time.Clock().tick(200)
 
-                  pygame.time.delay(200)
 
       #used for drawing the aniamtion when an invalid move is made troughout 
       def worng_animation(self, tiles, letters):
@@ -95,6 +105,7 @@ class Animations:
             for rep in range(3):
                   #shift left
                   for rep in range(10):
+                        self.event()
                         self.screen_init()
                         for i in range(height):
                               for j in range(width):
@@ -109,7 +120,7 @@ class Animations:
                         
                         letters.draw_offset(self.screen, self.font, offset)
                         pygame.display.update()
-                        pygame.time.delay(8)
+                        pygame.time.Clock().tick(200)
 
                   #shift right
                   for rep in range(10):
@@ -124,4 +135,4 @@ class Animations:
                                     tiles.draw_tile(self.screen, tiles.coord[i][j][0], tiles.coord[i][j][1], 60, colorTile[i][j])
                         letters.draw_offset(self.screen, self.font, offset)
                         pygame.display.update()
-                        pygame.time.delay(8)
+                        pygame.time.Clock().tick(200)

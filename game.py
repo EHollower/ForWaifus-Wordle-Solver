@@ -1,6 +1,6 @@
 import pygame
 import random
-import ctypes
+import subprocess
 from dictionary import wordle_dictionary
 from assets.colors import colors_arr, colorTemp, colorTile
 from assets.tiles import Tiles
@@ -39,13 +39,13 @@ def outcome(wordle, guess):
                   colorTemp[i] = colors_arr[2]
                   code = code * 3 + 2
                   continue
-            if freq[ord(guess[i]) - ord('A')]:
+            if freq[ord(guess[i]) - ord('A')] >= 1:
                   colorTemp[i] = colors_arr[3]
                   code = code * 3 + 1
                   continue
             colorTemp[i] = colors_arr[5]
             code = code * 3
-
+      print(code)
       g = open("communication.txt", "w")
       g.write(str(code))
       g.close()
@@ -58,7 +58,7 @@ def main():
       wordle = random.choice(wordle_dictionary)
       print(wordle)
       clock = pygame.time.Clock()
-      last = 0
+      subprocess.Popen("solver", shell=True)
       while run:
             letters.permute()
             animations.screen_init()
@@ -72,6 +72,7 @@ def main():
                   for ch in x:
                         animations.insert_animation(tiles, letters)
                         letters.insert_letter(ch)
+                        clock.tick(60)
                   outcome(wordle, letters.str[letters.y])
                   animations.outcome_animation(tiles, letters)
                   letters.enter_guess()
