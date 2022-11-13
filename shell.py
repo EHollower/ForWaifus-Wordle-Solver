@@ -1,6 +1,5 @@
 import pygame
 import random
-import ctypes
 from dictionary import wordle_dictionary
 from assets.colors import colors_arr, colorTemp, colorTile
 from assets.tiles import Tiles
@@ -29,32 +28,20 @@ run = True
 
 def outcome(wordle, guess):
       global run
-      freq = [0 for i in range(27)]
-      n, code = len(wordle), 0
-      for i in range(n):
-            freq[ord(wordle[i]) - ord('A')] += 1
-
-      for i in range(n):
-            if guess[i] == wordle[i]:
-                  colorTemp[i] = colors_arr[2]
-                  code = code * 3 + 2
-                  continue
-            if freq[ord(guess[i]) - ord('A')]:
-                  colorTemp[i] = colors_arr[3]
-                  code = code * 3 + 1
-                  continue
-            colorTemp[i] = colors_arr[5]
-            code = code * 3
-
-      g = open("communication.txt", "w")
-      g.write(str(code))
-      g.close()
+      n = len(wordle)
+      for j in range(n):
+            colorTemp[j] = colors_arr[7]
+            if guess[j] == wordle[j]:
+                  colorTemp[j] = colors_arr[2]
+      
+      for j in range(n):
+            if guess[j] in wordle and colorTemp[j] == colors_arr[7]: colorTemp[j] = colors_arr[3]
+            elif colorTemp[j] == colors_arr[7]: colorTemp[j] = colors_arr[5]
 
       if colorTemp.count(colors_arr[2]) == n:
             run = False
 
 def main():
-      open('communication.txt', 'w').close()
       wordle = random.choice(wordle_dictionary)
       print(wordle)
       clock = pygame.time.Clock()
@@ -64,22 +51,33 @@ def main():
             animations.screen_init()
             tiles.draw_table(screen)
             letters.draw(screen, font)
-            f = open("communication.txt", "r")
-            x = f.read()
-            f.close()
-
-            if len(x) == 5:
-                  for ch in x:
-                        animations.insert_animation(tiles, letters)
-                        letters.insert_letter(ch)
-                  outcome(wordle, letters.str[letters.y])
-                  animations.outcome_animation(tiles, letters)
-                  letters.enter_guess()
-                  
             for event in pygame.event.get():
                   if event.type == pygame.QUIT:
                         pygame.quit()
-                        exit()                        
+                        exit()
+                  
+                  if event.type ==  pygame.KEYDOWN:
+                        if event.key == pygame.K_BACKSPACE:
+                              letters.delete_letter()
+                        
+                        if event.key == pygame.K_RETURN:
+                              now = pygame.time.get_ticks()
+                              
+                              if "".join(letters.str[letters.y]) in wordle_dictionary:
+                                    outcome(wordle, letters.str[letters.y])
+                                    animations.outcome_animation(tiles, letters)
+                                    letters.enter_guess()
+                                    continue
+                                    
+                              if now - last >= 300:
+                                    animations.worng_animation(tiles, letters)
+                                    last = pygame.time.get_ticks()
+
+                        key_pressed = event.unicode.upper()
+                        if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":
+                              animations.insert_animation(tiles, letters)
+                              letters.insert_letter(key_pressed)
+                        
 
             pygame.display.update()
             clock.tick(60)
