@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <chrono>
 
 using namespace std;
 
@@ -70,7 +69,7 @@ string optimalWordFind(int n) {
 }
 
 int newSet(int n, int pattern, string cuvoptim) {
-      int newN;
+      int newN = 0;
       for(int j = 1;j <= n;j++) {
             int cod = paternFind(v[j], cuvoptim);
             if(cod == pattern) {
@@ -78,6 +77,29 @@ int newSet(int n, int pattern, string cuvoptim) {
             }
       }
       return newN;
+}
+
+int paternGet() {
+      int cnt = 0;
+      string GetData;
+      while(true) {
+            f.open("communication.txt");
+            f >> GetData;
+            f.close();
+            ++cnt;
+            if(GetData == "")
+                  exit(1);
+            if(GetData.length() >= 1 && GetData.length() <= 3) {
+                  break;
+            }
+      }
+      return stoi(GetData);
+}
+
+void pushWordle(string cuvoptim) {
+      g.open("communication.txt");
+      g << cuvoptim;
+      g.close();
 }
 
 int main() {
@@ -88,26 +110,18 @@ int main() {
       --m;
       f.close();
 
+
       int n = m, sum = 0;
       string cuvoptim = "TAREI";
-      g.open("communication.txt");
-      g << cuvoptim;
-      g.close();
-      std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+      pushWordle(cuvoptim);
       int oldN = n, ct = 1, patern;
-      f.open("communication.txt");
-      f >> patern; n = newSet(m, patern, cuvoptim);
-      f.close();
-      while(n) {
+      patern = paternGet();
+      n = newSet(m, patern, cuvoptim);
+      while(n != 0) {
             oldN = n, cuvoptim = optimalWordFind(n), ++ct;
-            g.open("communication.txt");
-            g << cuvoptim;
-            g.close();
-            std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-            f.open("communication.txt");
-            f >> patern; n = newSet(n, patern, cuvoptim);
-            //cout << patern << " " << n << "\n";
-            f.close();
+            pushWordle(cuvoptim);
+            patern = paternGet();
+            n = newSet(n, patern, cuvoptim);
             if(patern == 242) {
                   break;
             }

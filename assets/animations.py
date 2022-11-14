@@ -1,4 +1,5 @@
 import pygame
+import subprocess
 from assets.colors import colors_arr, colorTemp, colorTile
 from sys import exit
 
@@ -9,6 +10,7 @@ class Animations:
             self.title = title
             self.font = font
             self.count = 0
+            self.p = subprocess.Popen("solver", shell=True)
 
       def screen_init(self):
             self.screen.fill(colors_arr[1])
@@ -27,8 +29,9 @@ class Animations:
       def event(self):
              for event in pygame.event.get():
                   if event.type == pygame.QUIT:
+                        self.p.terminate()
                         pygame.quit()
-                        exit()  
+                        exit()
 
       #this funtion will be used to draw the animation when you insert a new letter
       def insert_animation(self, tiles, letters):
@@ -95,6 +98,7 @@ class Animations:
 
                         pygame.display.update()
                         pygame.time.Clock().tick(200)
+                  pygame.time.Clock().tick(200)
 
 
       #used for drawing the aniamtion when an invalid move is made troughout 

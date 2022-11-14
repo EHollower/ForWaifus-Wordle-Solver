@@ -6,7 +6,8 @@ from assets.colors import colors_arr, colorTemp, colorTile
 from assets.tiles import Tiles
 from assets.letters import Letters
 from assets.animations import Animations
-from sys import exit
+from sys import argv, exit, stderr
+from inspect import signature
 
 #This will initialize the Wordle game/game window
 pygame.init()
@@ -52,23 +53,19 @@ def outcome(wordle, guess):
       if colorTemp.count(colors_arr[2]) == n:
             run = False
 
-def main():
-      open('communication.txt', 'w').close()
-      wordle = random.choice(wordle_dictionary)
-      #pprint(wordle)
+def main(wordle):
+      #wordle = random.choice(wordle_dictionary)
       clock = pygame.time.Clock()
-      subprocess.Popen("solver", shell=True)
       while run:
             letters.permute()
             animations.screen_init()
             tiles.draw_table(screen)
             letters.draw(screen, font)
             f = open("communication.txt", "r")
-            x = f.read()
+            guess = f.read()
             f.close()
-
-            if len(x) == 5:
-                  for ch in x:
+            if len(guess) == 5:                                
+                  for ch in guess:
                         animations.insert_animation(tiles, letters)
                         letters.insert_letter(ch)
                         clock.tick(60)
@@ -76,14 +73,12 @@ def main():
                   animations.outcome_animation(tiles, letters)
                   letters.enter_guess()
                   
-            for event in pygame.event.get():
-                  if event.type == pygame.QUIT:
-                        pygame.quit()
-                        exit()                        
+            animations.event()                 
 
             pygame.display.update()
             clock.tick(60)
-
+      pygame.quit()
+      exit()
       while True:
             screen.fill(colors_arr[1])
             screen.blit(title, (300, 25))
@@ -103,9 +98,10 @@ def main():
             for event in pygame.event.get():
                   if event.type == pygame.QUIT:
                         pygame.quit()
+                        animations.p.terminate()
                         exit()
             pygame.display.update()
             clock.tick(60)
 
 if __name__ == '__main__':
-      main()
+      main(argv[1])
