@@ -1,6 +1,5 @@
 import pygame
 import random
-import subprocess
 from dictionary import wordle_dictionary
 from assets.colors import colors_arr, colorTemp, colorTile
 from assets.tiles import Tiles
