@@ -30,7 +30,9 @@ class Animations:
       def event(self):
              for event in pygame.event.get():
                   if event.type == pygame.QUIT:
-                        os.system("taskkill /PID "+ str(self.p.pid) + " /F")
+                        g = open("communication.txt", "w")
+                        g.write("---")
+                        g.close()
                         pygame.quit()
                         exit()
 

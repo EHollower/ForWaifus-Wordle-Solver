@@ -45,6 +45,7 @@ def outcome(wordle, guess):
                   continue
             colorTemp[i] = colors_arr[5]
             code = code * 3
+         
       g = open("communication.txt", "w")
       g.write(str(code))
       g.close()
