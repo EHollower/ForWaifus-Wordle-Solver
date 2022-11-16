@@ -77,8 +77,7 @@ def main(wordle):
 
             pygame.display.update()
             clock.tick(60)
-      pygame.quit()
-      exit()
+
       while True:
             screen.fill(colors_arr[1])
             screen.blit(title, (300, 25))
@@ -104,4 +103,4 @@ def main(wordle):
             clock.tick(60)
 
 if __name__ == '__main__':
-      main(argv[1])
+      main(random.choice(wordle_dictionary))

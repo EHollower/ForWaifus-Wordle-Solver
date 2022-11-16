@@ -1,5 +1,6 @@
 import pygame
 import subprocess
+import os
 from assets.colors import colors_arr, colorTemp, colorTile
 from sys import exit
 
@@ -10,7 +11,7 @@ class Animations:
             self.title = title
             self.font = font
             self.count = 0
-            self.p = subprocess.Popen("solver", shell=True)
+            self.p = subprocess.Popen(["solver"], shell=True)
 
       def screen_init(self):
             self.screen.fill(colors_arr[1])
@@ -29,7 +30,7 @@ class Animations:
       def event(self):
              for event in pygame.event.get():
                   if event.type == pygame.QUIT:
-                        self.p.terminate()
+                        os.system("taskkill /PID "+ str(self.p.pid) + " /F")
                         pygame.quit()
                         exit()
 
