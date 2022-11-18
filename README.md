@@ -45,7 +45,7 @@ py game.py or py shell.py
 
 Procesul de creeare al acestui repo a constiuit o impartire intre creearea interfetiei jocului (Bucă Mihnea-Vicențiu ) si calculul cuvantului optim de guess(Petrovici Ricardo-Dumitru)
 
-Comentariile codului sunt in **engleza** din motivul ca noua, personal, ne este mai usor sa gandim codul si functionalitatile lui in acest mod. Documentatia librariilor folosite si depanarii/google-ingurile ulterioare in urma gasirii unui bug e facuta in engleza in majoirtatea cazurilor
+Comentariile codului sunt in **engleza** din motivul ca noua, personal, ne este mai usor sa gandim codul si functionalitatile lui in acest mod. Documentatia librariilor folosite si depanarile/google-ingurile ulterioare in urma gasirii unui bug e facuta in engleza in majoirtatea cazurilor
 
 Daca cumva se gasete un bug/nelamuriri puteti oricand sa dati un email pe adresele noastre de unibuc:
 
