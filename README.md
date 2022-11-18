@@ -3,9 +3,9 @@ ForWaifus Wordle-Solver
 
 Echipa formata din:
 
-Bucă Mihnea-Vicențiu
+- Bucă Mihnea-Vicențiu Grupa 152
 
-Petrovici Ricardo-Dumitru
+- Petrovici Ricardo-Dumitru Grupa 151
 
 ------------------------------------------------------------------------------------------------
 
@@ -27,11 +27,11 @@ pip install pygame
 
 ### How to run
 
+aceasta comanda trebuie rulata o singura data odata cu clonarea codului
+
 ```
 g++ solver.cpp -o solver.exe
 ```
-
-aceasta comanda trebuie rulata o singura data odata cu clonarea codului
 
 pentru a rula game.py/shell.py
 
@@ -40,6 +40,23 @@ py game.py or py shell.py
 ```
 
 ----------------------------------------------------------------------------------------
+
+### Foreword
+
+Procesul de creeare al acestui repo a constiuit o impartire intre creearea interfetiei jocului (Bucă Mihnea-Vicențiu ) si calculul cuvantului optim de guess(Petrovici Ricardo-Dumitru)
+
+Comentariile codului sunt in **engleza** din motivul ca noua, personal, ne este mai usor sa gandim codul si functionalitatile lui in acest mod. Documentatia librariilor folosite si depanarii/google-ingurile ulterioare in urma gasirii unui bug e facuta in engleza in majoirtatea cazurilor
+
+Daca cumva se gasete un bug/nelamuriri puteti oricand sa dati un email pe adresele noastre de unibuc:
+
+----------------------------------------------------------------------------------------
+
+### Crearea interfetei jocului / cum interactioneaza cu solverul
+
+
+----------------------------------------------------------------------------------------
+
+### Calculul entropiei
 
 Solutia ne-a oferit un numar mediu al guess-urilor de 3.98979.
 
