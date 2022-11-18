@@ -1,9 +1,45 @@
-# ForWaifus-Wordle-Solver
+ForWaifus Wordle-Solver
+================================================================
+
 Echipa formata din:
 
-Mihnea-Vicențiu Bucă
+Bucă Mihnea-Vicențiu
 
-Ricardo-Petrovici Dumitru
+Petrovici Ricardo-Dumitru
+
+------------------------------------------------------------------------------------------------
+
+### Prerequisites
+
+
+Pentru a putea rula codul va fi nevoie sa se intaleze urmatoarele:
+
+  - [python](https://www.python.org/)
+
+  - [pygame](https://www.pygame.org/news) -> se poate va descarca prin comanda:
+
+```
+pip install pygame
+```
+   - [GCC](https://www.geeksforgeeks.org/complete-guide-to-install-c17-in-windows/)
+
+-----------------------------------------------------------------------------------------------
+
+### How to run
+
+```
+g++ solver.cpp -o solver.exe
+```
+
+aceasta comanda trebuie rulata o singura data odata cu clonarea codului
+
+pentru a rula game.py/shell.py
+
+```
+py game.py or py shell.py
+```
+
+----------------------------------------------------------------------------------------
 
 Solutia ne-a oferit un numar mediu al guess-urilor de 3.98979.
 
