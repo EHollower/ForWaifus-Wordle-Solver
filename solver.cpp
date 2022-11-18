@@ -5,7 +5,11 @@ How does it work: -> it communicates with the wordle game troughout communicatio
                   -> the solver awaits a base 3 number such that it can calculate the next optimal word the can be used for the next guess
                   -> once the game.py is closed, solver.exe should close as well
 
-How it calculates the entropy: -> Ricardo scrie de aici in engleza pls
+How it calculates the entropy: -> We calculate the entropy of a word by checking it in raport with every other word, we check what patern will be given if we guess
+the first word, and the word to be guessed is every other word then we count every patern appearance, then we use the formula: 
+S = P(0) / n * log2(n / P(0)) + P(1) / n * log2(n / P(1)) + ...... + P(242) / n log2(n / P(242)), where P(k) is the number of apappearances of every patern
+and n is the total number of words, then we guess the optimal word, and check what words give the same patern in raport with our guess and create a smaller set,
+then we repet the steps on a the smaller set until we get the word that we had to guess.
 
 
 Why did we write the solver in cpp? -> well because of the efficiency that it offers and familiarity with the language
@@ -67,8 +71,9 @@ void read_wordle_dictionary(std::string wordle_dictionary[], int& n) {
       f.close();
 }
 
-//Ricardo scrie aici ce face functia mai in detaliu in engleza, pls
-//poti pune commenturi si prin program
+/*The words have all 5 letters, and every lattern can give us 3 situations when the word is guessed so we can reprezent the given pattern as a base 3 number where 
+value 0 means grey, value 1 means yellow and value 2 means green, then we convert it to base 10 and give it a cod, this function returns the cod that guess gives
+in raport with word(basically is as if we need to guess "word", and out guess is "guess")*/
 int pattern_find(std::string word, std::string guess) {
       int code = 0, n = word.length();
       for(int i = 0;i < n;i++) {
@@ -89,19 +94,20 @@ int pattern_find(std::string word, std::string guess) {
       return code;
 }
 
-//Ricardo scrie aici ce face functia mai in detaliu in engleza, pls
-//poti pune commenturi si prin program
+/*This function checks every possibel guess in raport with the current set of possibel words, then it returns the optimal word*/
 std::string optimal_word_find(const std::string wd[], int m, int n) {
       int nrpattern[250];
       std::string woptim;
       long double entropy_max = -1;
 
       for(int i = 1;i <= m;i++) {
+            // m reprezents the total number of words that we can guess
             memset(nrpattern, 0x0, sizeof(nrpattern));
-
+            // reprezents the cardinality of the curret set of possibel words
             for(int j = 1;j <= n;j++)
                   ++nrpattern[pattern_find(wd[j], wd[i])];
 
+            // we calculate the amount of information that it gives
             long double entropy_word = 0, p;
             for(int j = 0; j < 243; j++){
                   if(nrpattern[j]) {
@@ -119,8 +125,8 @@ std::string optimal_word_find(const std::string wd[], int m, int n) {
       return woptim;
 }
 
-//Ricardo scrie aici ce face functia mai in detaliu in engleza, pls
-//poti pune commenturi si prin program
+/*this function returns the smaller set of possibel words by checking what words from the current set gives us the same pattern as the one that needs to be guess,
+when we guess the optimal word*/
 int newSet(int n, int pattern, std::string wd[], std::string woptim) {
       int newN = 0;
       for(int j = 1;j <= n;j++) {
@@ -132,13 +138,13 @@ int newSet(int n, int pattern, std::string wd[], std::string woptim) {
       return newN;
 }
 
-//Poti sa scrii si pe aici ceva in cazu in care e nevoie
 int main() {
       int m = 0;
       std::string wordle_dictionary[15000];
       read_wordle_dictionary(wordle_dictionary, m);
 
       int n = m;
+      // we will always find that is optimal to start with "TAREI", so we always start with "TAREI"
       std::string woptim = "TAREI";
       push_wordle(woptim);
 
