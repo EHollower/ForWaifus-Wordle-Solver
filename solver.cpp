@@ -8,36 +8,46 @@ How does it work: -> it communicates with the wordle game troughout communicatio
 How it calculates the entropy: -> Ricardo scrie de aici in engleza pls
 
 
-Questions:
-Why did we write the documation/code/comments in english? -> because we felt like it
 Why did we write the solver in cpp? -> well because of the efficiency that it offers and familiarity with the language
-
 */
 
 //libraries that we need for the solver
 #include <fstream>
 #include <string.h>
 #include <math.h>
+#include <iostream>
 
+//pragma opitimization to imporve the performance a bit (hopefully :_())
+#pragma GCC optimize("Ofast,unroll-loops")
+
+//this function will continueously read 
+// from communication.txt untill game.py provides a base 3 number or a "termination string"
 int get_pattern() {
       std::ifstream f;
       std::string DataDump;
+      //read till smth. happens
       while(true) {
             f.open("communication.txt");
             f >> DataDump;
             f.close();
-      
+
+            //if from communication.txt we recive "---" then we know that we should stop here because game.py was stoped
             if(DataDump == "---") {
                   exit(0);
             }
 
+            //since we know what type of date we send and recive from communication.txt we will know that
+            //when we recive an input with length less than or equal to 3 that we have an input from game.py
             if(DataDump.length() <= 3) {
                   return stoi(DataDump);
             }
       }
+      //the functions should never reach this point, its use is just to avoid the warning from the compiler
       return -1;
 }
 
+//push the optimal word to game.py after calculating the optimal guess
+//used to clear up the code a bit
 void push_wordle(std::string woptim) {
       std::ofstream g;
       g.open("communication.txt");
@@ -46,6 +56,8 @@ void push_wordle(std::string woptim) {
       g.close();
 }
 
+//reads all the words that will be allowed in game.py
+//used to clear up the code a bit
 void read_wordle_dictionary(std::string wordle_dictionary[], int& n) {
       std::ifstream f;
       f.open("cuvinte_wordle.txt");
@@ -55,14 +67,10 @@ void read_wordle_dictionary(std::string wordle_dictionary[], int& n) {
       f.close();
 }
 
+//Ricardo scrie aici ce face functia mai in detaliu in engleza, pls
+//poti pune commenturi si prin program
 int pattern_find(std::string word, std::string guess) {
-      int freq[26];
-      memset(freq, 0, sizeof(freq));
-
       int code = 0, n = word.length();
-      for(int i = 0;i < n;i++)
-            freq[word[i] - 'A'] = 1;
-
       for(int i = 0;i < n;i++) {
             //green
             if(word[i] == guess[i]) {
@@ -70,7 +78,7 @@ int pattern_find(std::string word, std::string guess) {
                   continue;
             }
             //yellow
-            if(freq[guess[i] - 'A']) {
+            if(word.find(guess[i]) != std::string::npos) {
                   code = code * 3 + 1;
                   continue;
             }
@@ -81,30 +89,29 @@ int pattern_find(std::string word, std::string guess) {
       return code;
 }
 
-std::string optimal_word_find(std::string wd[], long double& aux, int m, int n) {
+//Ricardo scrie aici ce face functia mai in detaliu in engleza, pls
+//poti pune commenturi si prin program
+std::string optimal_word_find(const std::string wd[], int m, int n) {
+      int nrpattern[250];
       std::string woptim;
       long double entropy_max = -1;
 
       for(int i = 1;i <= m;i++) {
-            int nrpattern[250];
-            memset(nrpattern, 0, sizeof(nrpattern));
+            memset(nrpattern, 0x0, sizeof(nrpattern));
 
-            for(int j = 1;j <= n;j++) {
-                  int cod = pattern_find(wd[j], wd[i]);
-                  ++nrpattern[cod];
-            }
+            for(int j = 1;j <= n;j++)
+                  ++nrpattern[pattern_find(wd[j], wd[i])];
 
-            long double entropy_word = 0;
+            long double entropy_word = 0, p;
             for(int j = 0; j < 243; j++){
-                  if(nrpattern[j] > 0) {
-                        long double p = 1.0 * nrpattern[j] / n;
-                        entropy_word += p * log2(1.0 / p);
+                  if(nrpattern[j]) {
+                        p = 1.0 * nrpattern[j] / n;
+                        entropy_word += p * -log2(p);
                   }
             }
 
             if(entropy_word > entropy_max) {
                   entropy_max = entropy_word;
-                  aux = entropy_max;
                   woptim = wd[i];
             }
       }
@@ -112,6 +119,8 @@ std::string optimal_word_find(std::string wd[], long double& aux, int m, int n) 
       return woptim;
 }
 
+//Ricardo scrie aici ce face functia mai in detaliu in engleza, pls
+//poti pune commenturi si prin program
 int newSet(int n, int pattern, std::string wd[], std::string woptim) {
       int newN = 0;
       for(int j = 1;j <= n;j++) {
@@ -123,6 +132,7 @@ int newSet(int n, int pattern, std::string wd[], std::string woptim) {
       return newN;
 }
 
+//Poti sa scrii si pe aici ceva in cazu in care e nevoie
 int main() {
       int m = 0;
       std::string wordle_dictionary[15000];
@@ -132,13 +142,12 @@ int main() {
       std::string woptim = "TAREI";
       push_wordle(woptim);
 
-      int oldN = n, pattern;
+      int pattern;
       pattern = get_pattern();
       n = newSet(m, pattern, wordle_dictionary, woptim);
 
       while(n != 0) {
-            long double aux;
-            oldN = n, woptim = optimal_word_find(wordle_dictionary, aux, m, n);
+            woptim = optimal_word_find(wordle_dictionary, m, n);
             push_wordle(woptim);
 
             pattern = get_pattern();
@@ -147,5 +156,6 @@ int main() {
                   break;
             }
       }
+
       return 0;
 }
