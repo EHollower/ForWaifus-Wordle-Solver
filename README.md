@@ -22,6 +22,8 @@ Pentru a putea rula codul va fi nevoie sa se intaleze urmatoarele:
 pip install pygame
 ```
    - [GCC](https://www.geeksforgeeks.org/complete-guide-to-install-c17-in-windows/)
+   
+   - Fontul gasit in /asstets/font, pentru al instala e neovie sa fie instalate toate .ttf file-urile
 
 -----------------------------------------------------------------------------------------------
 
