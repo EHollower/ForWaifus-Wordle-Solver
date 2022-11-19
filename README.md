@@ -36,7 +36,9 @@ g++ solver.cpp -o solver.exe
 pentru a rula game.py/shell.py
 
 ```
-py game.py or py shell.py
+py game.py
+or
+py shell.py
 ```
 
 ----------------------------------------------------------------------------------------
