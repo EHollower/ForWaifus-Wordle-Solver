@@ -53,7 +53,9 @@ Daca cumva se gasete un bug/nelamuriri puteti oricand sa dati un email pe adrese
 
 ----------------------------------------------------------------------------------------
 
-### Crearea interfetei jocului / cum interactioneaza cu solverul (Bucă Mihnea-Vicențiu)
+### Crearea interfetei jocului / cum interactioneaza cu solverul 
+
+Bucă Mihnea-Vicențiu
 
 O buna parte din proceseul de creeare al interfatei a fost un "what if" pentru mine, am incercat zeci de posibiliati, animatii, subprocese astfel incat gameul sa fie cat mai fluid, mai lipsit de bugguri si cat mai apropiat de originalul wordle de pe NYT. Principalele surse de inspiratie a fost [originalul](https://www.nytimes.com/games/wordle/index.html) precum si o [copie](https://wordleunlimited.org/) al lui, pentru a studia mai indeaproape animatiile/modul de colorare al guessurilor fara sa fiu limitat la un singur cuvant pe zi.
 
