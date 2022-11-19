@@ -8,6 +8,8 @@ Black = "#121213"
 White = "#ffffff"
 Red = "#cc0000"
 
+#color red was used in an now deleted animation for the game, left it there beacuse it would involve a lot of reindexing on a lot of code so i was to lasy to modify it : )
+
 #make an array of colors
 colors_arr = [White, Black, Green, Yellow, Red, Grey1, Grey2, Grey3]
 
