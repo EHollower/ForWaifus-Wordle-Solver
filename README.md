@@ -92,9 +92,15 @@ Putem observa ca tinem cont doar de stadiul actual curent, fara sa vedem si cum 
 ### Referinte
 
 [orginialul wordle game](https://www.nytimes.com/games/wordle/index.html)
+
 [copia wordle game](https://wordleunlimited.org/)
+
 [Solving Wordle using information theory](https://www.youtube.com/watch?v=v68zYyaEmEA&t=0s)
+
 [Oh, wait, actually the best Wordle opener is not “crane”…](https://www.youtube.com/watch?v=fRed0Xmc2Wg&t=0s)
+
 [Maximising Differential Entropy to Solve Wordle](https://aditya-sengupta.github.io/coding/2022/01/13/wordle.html)
+
 [Intuitively Understanding the Shannon Entropy](https://www.youtube.com/watch?v=0GCGaw0QOhA)
+
 [Entropy in Compression - Computerphile](https://www.youtube.com/watch?v=M5c_RFKVkko)
