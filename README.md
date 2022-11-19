@@ -63,7 +63,7 @@ Ca structura codul este desutl de segmentat si am ales sa fie asa, deoarece am i
 
 Solverul a fost scirs de **Petrovici Ricardo-Dumitru**, dar am contribuit si acolo prin restructureare codului intr-o maniera destul de diferita fata de cum scriem codul C++ de obicei. Am vrut sa simplificam cat mai mult procesul de link intre joc si solver, astfel incat sa fie nevoie de cat mai putin cod/bibleoteci. Am ales sa scriem solverul in C++ deoarece, suntem foarte familiari cu limbajul (fiind amandoi olimpici la info in liceu),si entru a gasi si a timite outputul optim intr-un timp scurt.
 
-Descrierea mai indetaliu a proceselor se afla in cod, desi este in engleza, din motive pe care le-am enuntat mai sus, cred ca sunt destul de clar descrise implementarile programelor/claselor/animatiiolor, dar ca TLDR: jocul si solverul comunica printr-un fisier "communication.txt" care va fi creat la rularea jocului/solverului, ambele programe furnizand una celeilalte oputut/input in functie de informatiile primite.
+Descrierea mai indetaliu a proceselor se afla in cod, desi este in engleza, din motive pe care le-am enuntat mai sus, cred ca sunt destul de clar descrise implementarile programelor/claselor/animatiiolor, dar ca *TLDR*: jocul si solverul comunica printr-un fisier "communication.txt" care va fi creat la rularea jocului/solverului, ambele programe furnizand una celeilalte oputut/input in functie de informatiile primite.
 
 ----------------------------------------------------------------------------------------
 
