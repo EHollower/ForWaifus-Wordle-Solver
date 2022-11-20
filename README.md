@@ -1,7 +1,7 @@
 ForWaifus Wordle-Solver
 ================================================================
 
-Echipa formata din:
+Echipa formată din:
 
 - Bucă Mihnea-Vicențiu Grupa 152
 
@@ -12,24 +12,24 @@ Echipa formata din:
 ### Prerequisites
 
 
-Pentru a putea rula codul va fi nevoie sa se intaleze urmatoarele:
+Pentru a putea rula codul va fi nevoie să se instaleze următoarele:
 
   - [python](https://www.python.org/)
 
-  - [pygame](https://www.pygame.org/news) -> se poate va descarca prin comanda:
+  - [pygame](https://www.pygame.org/news) -> se poate descărca prin comanda:
 
 ```
 pip install pygame
 ```
    - [GCC](https://www.geeksforgeeks.org/complete-guide-to-install-c17-in-windows/)
    
-   - Fontul gasit in /asstets/font, pentru al instala e neovie sa fie instalate toate .ttf file-urile
+   - Fontul găsit în /asstets/font, pentru al instala e neovie să fie instalate toate .ttf file-urile
 
 -----------------------------------------------------------------------------------------------
 
 ### How to run
 
-aceasta comanda trebuie rulata o singura data odata cu clonarea codului
+această comandă trebuie rulată o singură dată, odată cu clonarea codului
 
 ```
 g++ solver.cpp -o solver.exe
@@ -47,27 +47,27 @@ py shell.py
 
 ### Foreword
 
-Procesul de creeare al acestui repo a constiuit o impartire intre creearea interfetiei jocului (Bucă Mihnea-Vicențiu) si calculul cuvantului optim de guess(Petrovici Ricardo-Dumitru)
+Procesul de creeare al acestui repo a constiuit o împărțire între creearea interfeței jocului (Bucă Mihnea-Vicențiu) și calculul cuvântului optim de guess(Petrovici Ricardo-Dumitru)
 
-Comentariile codului sunt in **engleza** din motivul ca noua, personal, ne este mai usor sa gandim codul si functionalitatile lui in acest mod. Documentatia librariilor folosite si depanarile/google-ingurile ulterioare in urma gasirii unui bug e facuta in engleza in majoirtatea cazurilor
+Comentariile codului sunt în **engleză** din motivul că nouă, personal, ne este mai usor să gândim codul și funcționalitățile lui în acest mod. Documentația librăriilor folosite și depanările/google-ingurile ulterioare în urma găsirii unui bug e făcuta în engleză în majoritatea cazurilor
 
-Daca cumva se gasete un bug/nelamuriri puteti oricand sa dati un email pe adresele noastre de unibuc:
+Dacă cumva se găsete un bug/nelămuriri puteți oricănd să dați un email pe adresele noastre de unibuc:
 
 ----------------------------------------------------------------------------------------
 
-### Crearea interfetei jocului / cum interactioneaza cu solverul 
+### Crearea interfeței jocului / cum interacționează cu solverul 
 
 Bucă Mihnea-Vicențiu
 
-O buna parte din proceseul de creeare al interfatei a fost un "what if" pentru mine, am incercat zeci de posibiliati, animatii, subprocese astfel incat gameul sa fie cat mai fluid, mai lipsit de bugguri si cat mai apropiat de originalul wordle de pe NYT. Principalele surse de inspiratie a fost [originalul](https://www.nytimes.com/games/wordle/index.html) precum si o [copie](https://wordleunlimited.org/) al lui, pentru a studia mai indeaproape animatiile/modul de colorare al guessurilor fara sa fiu limitat la un singur cuvant pe zi.
+O bună parte din proceseul de creeare al interfaței a fost un "what if" pentru mine, am încercat zeci de posibiliăți, animații, subprocese astfel încat gameul să fie căt mai fluid, mai lipsit de bugguri și cât mai apropiat de originalul wordle de pe NYT. Principalele surse de inspirație au fost [originalul](https://www.nytimes.com/games/wordle/index.html) precum și o [copie](https://wordleunlimited.org/) a lui, pentru a studia mai îndeaproape animațiile/modul de colorare al guessurilor fară sa fiu limitat la un singur cuvânt pe zi.
 
-Pygame nu cred ca e, nici pe departe, cea mai buna obtiune pentru a face un joc de wordle, dar am continuat sa il folosec din simplul motiv ca sunt cel mai familiar cu bibleoteca si am vrut sa reduc pe cat de mult posibil importul de alte bibleoteci grafice/alte module de animatii. "All and all" nu a fost nici cel mai usor lucru, dar nici cel mai greu si sunt destul de multumit de rezultatul grafic final al jocului.
+Pygame nu cred că e, nici pe departe, cea mai bună opțiune pentru a face un joc de wordle, dar am continuat să îl folosec din simplul motiv că sunt cel mai familiar cu bibleoteca și am vrut să reduc pe cât de mult posibil importul de alte bibleoteci grafice/alte module de animații. "All and all" nu a fost nici cel mai ușor lucru, dar nici cel mai greu și sunt destul de mulțumit de rezultatul grafic final al jocului.
 
-Ca structura codul este desutl de segmentat si am ales sa fie asa, deoarece am incercat pe cat de mult posibil sa nu fie un "mumbo jumbo" spaghetti code pe care sa nu il inteleg nici eu la finalul zilei. Fiecare clasa/program in python isi au propiul scop, astfel incat daca la un moment dat ma decid sa fac modificari in cod sa stiu ce, unde si cum am implementat/modificat. Prin aceste procese cred ca am reusit destul de mult sa fac codul cat mai citibil pentru toata lumea.
+Ca structură codul este destul de segmentat și am ales să fie așa, deoarece am încercat pe cât de mult posibil să nu fie un "mumbo jumbo" spaghetti code pe care să nu îl înteleg nici eu la finalul zilei. Fiecare clasă/program în python își au propiul scop, astfel încât dacă la un moment dat mă decid să fac modificări în cod să știu ce, unde și cum am implementat/modificat. Prin aceste procese cred că am reușit destul de mult să fac codul cât mai citibil pentru toată lumea.
 
-Solverul a fost scirs de **Petrovici Ricardo-Dumitru**, dar am contribuit si acolo prin restructureare codului intr-o maniera destul de diferita fata de cum scriem codul C++ de obicei. Am vrut sa simplificam cat mai mult procesul de link intre joc si solver, astfel incat sa fie nevoie de cat mai putin cod/bibleoteci. Am ales sa scriem solverul in C++ deoarece, suntem foarte familiari cu limbajul (fiind amandoi olimpici la info in liceu),si entru a gasi si a timite outputul optim intr-un timp scurt.
+Solverul a fost scirs de **Petrovici Ricardo-Dumitru**, dar am contribuit și acolo prin restructureare codului într-o maniera destul de diferită față de cum scriem codul C++ de obicei. Am vrut să simplificăm cât mai mult procesul de link între joc și solver, astfel încât să fie nevoie de cât mai puțin cod/bibleoteci. Am ales să scriem solverul in C++ deoarece, suntem foarte familiari cu limbajul (fiind amândoi olimpici la info în liceu) și pentru a găsi și a trimite outputul optim într-un timp scurt.
 
-Descrierea mai indetaliu a proceselor se afla in cod, desi este in engleza, din motive pe care le-am enuntat mai sus, cred ca sunt destul de clar descrise implementarile programelor/claselor/animatiiolor, dar ca **TLDR**: jocul si solverul comunica printr-un fisier "communication.txt" care va fi creat la rularea jocului/solverului, ambele programe furnizand una celeilalte oputut/input in functie de informatiile primite.
+Descrierea mai îndetaliu a proceselor se află în cod, deși este în engleză, din motive pe care le-am enunțat mai sus, cred că sunt destul de clar descrise implementările programelor/claselor/animațiilor, dar ca **TLDR**: jocul și solverul comunică printr-un fișier "communication.txt" care va fi creat la rularea jocului/solverului, ambele programe furnizând unul celuilalt oputut/input în funcție de informațiile primite.
 
 ----------------------------------------------------------------------------------------
 
@@ -75,17 +75,17 @@ Descrierea mai indetaliu a proceselor se afla in cod, desi este in engleza, din 
 
 Petrovici Ricardo-Dumitru
 
-Lista completa de solutii la toate cuvintele este in fisierul "solutii.txt"
+Lista completă de soluții la toate cuvintele este in fișierul "solutii.txt"
 
-Solutia ne-a oferit un numar mediu al guess-urilor de $3.98979$.
+Soluția ne-a oferit un număr mediu al guessurilor de $3.98979$.
 
-Ideea de calcul al cuvantului optim pe care il ghicim este urmatoarea: putem observa ca guess-ul nostru poate fi in maxim $243$ de situati posibil fata de cuvantul pe care trebuie sa il ghicim, asta ne da ideea de a lua un cuvant(pentru simplitate o sa il notam cu A), apoi sa interam prin toate cuvintele din multime si sa contorizam in ce raport se afla A daca i-am da guess, iar cuvintele din multime ar fi pe rand cuvantul care trebuie ghicit. Apoi pentru a obtine cantitatea de informatie pe care un cuvant ni-l ofera interam prin toate paternele si folosim formula  $S$ = $\frac{P_0}{n}$ * $log_2(\frac{n}{P_0})$ + $\frac{P_1}{n}$ * $log_2(\frac{n}{P_1})$ $+ ...... +$ $\frac{P_{242}}{n}$ * $log_2(\frac{n}{P_{242}})$, unde $P_k$ reprezinta numarul de apariti al paternului $k$, iar $n$ reprezinta numarul de cuvinte din multime, repetam acest lucru pentru fiecare cuvant si astfel aflam cuvantul optim. Dupa acesti pasi mai ramane sa restrangem multimea doar la cuvintele care ne ofera acelasi patern in raport cu cuvantul care trebuie ghicit, ca cel oferit de guessul oferit, apoi repetam procedeul cautam iarasi cuvantul optim in multimea restransa. Aceasta solutie ne ofera un numar mediu al guess-uri de $4.37367$(inculde si guessul final cand ghicim cuvantul respectiv).
+Ideea de calcul al cuvântului optim pe care îl ghicim este următoarea: putem observa că guess-ul nostru poate fi în maxim $243$ de situați posibile față de cuvântul pe care trebuie să îl ghicim, asta ne dă ideea de a lua un cuvânt(pentru simplitate o să îl notăm cu A), apoi să interăm prin toate cuvintele din mulțime și să contorizăm în ce raport se află A dacă i-am da guess, iar cuvintele din mulțime ar fi pe rând cuvântul care trebuie ghicit. Apoi pentru a obține cantitatea de informație pe care un cuvânt ni-l oferă interăm prin toate paternele și folosim formula  $S$ = $\frac{P_0}{n}$ * $log_2(\frac{n}{P_0})$ + $\frac{P_1}{n}$ * $log_2(\frac{n}{P_1})$ $+ ...... +$ $\frac{P_{242}}{n}$ * $log_2(\frac{n}{P_{242}})$, unde $P_k$ reprezintă numărul de apariți al paternului $k$, iar $n$ reprezintă numărul de cuvinte din mulțime, repetăm acest lucru pentru fiecare cuvănt și astfel aflăm cuvântul optim. După acesti pași mai rămâne să restrângem mulțimea doar la cuvintele care ne oferă același patern în raport cu cuvântul care trebuie ghicit, ca cel oferit de guess, apoi repetăm procedeul cautăm iarăși cuvântul optim în mulțimea restrânsă. Această soluție ne oferă un număr mediu al guess-uri de $4.37367$(inculde și guessul final când ghicim cuvântul respectiv).
 
-Desi buna solutia precedenta ne creeaza cateva cazuri nasoale, un exemplu find: VOTUL TAREI COTUL BOTUL FOTUL GOTUL HOTUL LOTUL MOTUL POTUL SOTUL VOTUL $11$, aici toate cuvintele din multimea restransa ne ofera foarte putina informatie. O solutie ar fi sa nu cautam cuvantul optim doar in multimea restransa, ci in toata multimea cuvintelor. Aceasta solutie ne creaza urmatoarea problema, atunci cand toate cuvintele se restrang la un patern foarte precis putem avea multe cuvinte care sunt optime, dar sa alegem unu care in practica ne ofera doar $0$ biti de informatie si creaza o bucla infinita. Aceasta problema poate fi rezolvata daca mereu tine multimea cuvintelor optime la inceputul array-ul din cuvinte, astfel obtinem un numar mediu al guess-urilor de $3.98979$(obtinut cu deschiderea "TAREI"), dar este in medie de $30$ de ori mai lenta.
+Deși bună soluția precedentă ne creează câteva cazuri nasoale, un exemplu find: VOTUL TAREI COTUL BOTUL FOTUL GOTUL HOTUL LOTUL MOTUL POTUL SOTUL VOTUL $11$, aici toate cuvintele din mulțimea restrânsă ne oferă foarte puțină informație. O soluție ar fi să nu căutăm cuvântul optim doar în mulțimea restrânsă, ci în toată mulțimea cuvintelor. Această soluție ne crează următoarea problemă, atunci cănd toate cuvintele se restrâng la un patern foarte precis putem avea multe cuvinte care sunt optime, dar să alegem unul care în practică ne oferă $0$ biți de informație și crează o buclă infinită. Această problemă poate fi rezolvată dacă mereu ținem mulțimea cuvintelor optime la începutul arrayul de cuvinte, astfel obținem un număr mediu al guessurilor de $3.98979$(obținut cu deschiderea "TAREI"), dar este în medie de $30$ de ori mai lentă.
 
- O alta solutie posibil mai buna(nu a fost implementanta):
+ O altă soluție posibil mai bună(nu a fost implementantă):
  
-Putem observa ca tinem cont doar de stadiul actual curent, fara sa vedem si cum se comporta paterne in care ne imparte cuvantul optim multimea noastra, astfel cuvantul optim obtinut nu este mereu, de exemplu la calculul pe multimea initiala ne-a dat ca "TAREI" este deschiderea optima, dar in practica "CARTE"(in situatia in care "TAREI ne-a oferit un numar mediu al guess-uri de $4.37$, "CARTE" ne-a oferit $4.30$), astfel ne vine ideea de a cacula cuvantul cu adevarat optim, apoi sa repetam procesul pentru fiecare patern al cuvantului, astfel afland de fiecare data cuvantul cu adeverat optim, dar aceasta solutie este extrem de lenta in practica si ne creeaza cateva milioane de instante posibil, putem salva toate aceste instanta intr-un fisier si doar sa il citim la inceputul programului, astfel precalculand toate rezultatele si necesitand doar un calcul initial foarte mare, bine inteles ar fi tot mai lenta ca solutia initiala, citirea datelor durantd mai mult decat rularea solutiei actuale.
+Putem observa că ținem cont doar de stadiul actual, fară să vedem și cum se comportă paternele în care ne împarte cuvăntul optim mulțimea noastră, astfel cuvântul optim obținut nu este mereu optim, de exemplu la calculul pe mulțimea inițială ne-a dat că "TAREI" este deschiderea optimă, dar în practică "CARTE"(în situația în care "TAREI ne-a oferit un număr mediu al guessurilor de $4.37$, "CARTE" ne-a oferit $4.30$), astfel ne vine ideea de a cacula cuvântul cu adevărat optim, apoi să repetăm procesul pentru fiecare patern al cuvântului, astfel aflând de fiecare dată cuvântul cu adeverăt optim, dar această soluție este extrem de lentă în practică și ne creează câteva milioane de instanțe posibile, putem salva toate aceste instanțe într-un fișier și doar să îl citim la începutul programului, astfel precalculând toate rezultatele și necesitănd doar un calcul inițial foarte mare, bine înteles ar fi tot mai lentă ca soluția actuală, citirea datelor durând mai mult decât rularea soluției actuale.
 
 ----------------------------------------------------------------------------------------
 
