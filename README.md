@@ -53,6 +53,9 @@ Comentariile codului sunt în **engleză** din motivul că nouă, personal, ne e
 
 Dacă cumva se găsete un bug/nelămuriri puteți oricănd să dați un email pe adresele noastre de unibuc:
 
+mihnea-vicențiu.buca@s.unibuc.ro
+ricardo-dumitru.petrovici@s.unibuc.ro
+
 ----------------------------------------------------------------------------------------
 
 ### Crearea interfeței jocului / cum interacționează cu solverul 
