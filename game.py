@@ -46,7 +46,7 @@ tiles = Tiles(5, 6)
 letters = Letters(tiles.coord, 5, 6)
 
 def main(wordle):
-      #creates a new process (the solver) that will interact with 
+      #creates a new subprocess (the solver) that will run simulatinously with game.py to interact for finding the optimal guess
       subprocess.Popen(["solver"], shell=True)
       clear_data()
 
@@ -67,20 +67,25 @@ def main(wordle):
             #if we have another guess insert it
             if len(guess) == 5:
                   #add 1 more guess to the score
-                  score += 1                                
+                  score += 1                     
+                  #print/animate each letter to the screen           
                   for ch in guess:
                         animations.insert_animation(configs, tiles, letters, score)
                         letters.insert_letter(ch)
 
                         if animations.active:
                               configs.update_screen(60)
-
+                  
+                  #check if we guessed the word
                   run = outcome(wordle, letters.str[letters.y])
+                  #draw the colors coresponding to the wordle game buggy behavior
                   animations.outcome_animation(configs, tiles, letters, score)
+                  #go the the next line
                   letters.enter_guess()
             
             configs.update_screen()
 
+      #when we guessed the word enter in a state where nothing happens anymore till the user closes/terminates the program
       while True:
             configs.event_handle_solver()
             configs.screen_init_(score, run)
