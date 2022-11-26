@@ -2,7 +2,9 @@ import pygame
 import time
 from assets.colors import colors_arr, colorTile
 
-#class will be used to draw a Wordle table of height x width
+"""
+Tiles draws each a 5x6 grid on the screen and has limited use for animations/drawing purposes
+"""
 class Tiles:
       #will initialize the coordinates on the screen of each tile
       def __init__(self, width, height):
