@@ -79,7 +79,7 @@ Descrierea mai îndetaliu a proceselor se află în cod, deși este în engleză
 
 Petrovici Ricardo-Dumitru
 
-Lista completă de soluții la toate cuvintele este in fișierul "solutii.txt"
+Lista completă de soluții la toate cuvintele este in fișierul *solutii.txt*
 
 Soluția ne-a oferit un număr mediu al guessurilor de $3.98979$.
 
@@ -89,7 +89,7 @@ Deși bună soluția precedentă ne creează câteva cazuri nefavorabile, un exe
 
  O altă soluție posibil mai bună(nu a fost implementantă):
  
-Putem observa că ținem cont doar de stadiul actual, fară să vedem și cum se comportă paternele în care ne împarte cuvăntul optim mulțimea noastră, astfel cuvântul optim obținut nu este mereu optim, de exemplu la calculul pe mulțimea inițială ne-a dat că "TAREI" este deschiderea optimă, dar în practică "CARTE"(în situația în care "TAREI ne-a oferit un număr mediu al guessurilor de $4.37$, "CARTE" ne-a oferit $4.30$), astfel ne vine ideea de a cacula cuvântul cu adevărat optim, apoi să repetăm procesul pentru fiecare patern al cuvântului, astfel aflând de fiecare dată cuvântul cu adeverăt optim, dar această soluție este extrem de lentă în practică și ne creează câteva milioane de instanțe posibile, putem salva toate aceste instanțe într-un fișier și doar să îl citim la începutul programului, astfel precalculând toate rezultatele și necesitănd doar un calcul inițial foarte mare, bine înteles ar fi tot mai lentă ca soluția actuală, citirea datelor durând mai mult decât rularea soluției actuale.
+Putem observa că ținem cont doar de stadiul actual, fară să vedem și cum se comportă paternele în care ne împarte cuvăntul optim mulțimea noastră, astfel cuvântul optim obținut nu este mereu optim, de exemplu la calculul pe mulțimea inițială ne-a dat că **TAREI** este deschiderea optimă, dar în practică **CARTE**(în situația în care **TAREI** ne-a oferit un număr mediu al guessurilor de $4.37$, **CARTE** ne-a oferit $4.30$), astfel ne vine ideea de a cacula cuvântul cu adevărat optim, apoi să repetăm procesul pentru fiecare patern al cuvântului, astfel aflând de fiecare dată cuvântul cu adeverăt optim, dar această soluție este extrem de lentă în practică și ne creează câteva milioane de instanțe posibile, putem salva toate aceste instanțe într-un fișier și doar să îl citim la începutul programului, astfel precalculând toate rezultatele și necesitănd doar un calcul inițial foarte mare, bine înteles ar fi tot mai lentă ca soluția actuală, citirea datelor durând mai mult decât rularea soluției actuale.
 
 ----------------------------------------------------------------------------------------
 
