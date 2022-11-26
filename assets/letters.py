@@ -2,7 +2,10 @@ import pygame
 import time
 from assets.colors import colors_arr, colorTile
 
-#classed will be used draw the letters pressed so far
+"""
+Letters Class draws each letter curenly on the greed, remembers the position in the grid of the next letter that will be inserted and 
+permutes the letters up when we make more than 6 guesses, this is a stylisitc choise and helped us debug the solver/game.py better.
+"""
 class Letters:
       #initialize to find the coordinates on the screen in witch a letter should be placed if typed
       def __init__(self, coord, width, height):
@@ -11,7 +14,7 @@ class Letters:
             self.coord = coord
             self.str = [["" for i in range(self.width)] for i in range(self.height)]
 
-      #continue the game if you did not guess the word in 6 tires
+      #continue the game if you did not guess the word in 6 tries
       def permute(self):
             if self.y == self.height:
                   height, width = self.height, self.width
@@ -32,7 +35,7 @@ class Letters:
                   colorTile[self.y][self.x] = colors_arr[6]
                   self.x += 1
 
-      #deleting a letter
+      #deleting a letter used for shell.py
       def delete_letter(self):
             if self.x >= 1:
                   self.x -= 1
@@ -44,6 +47,8 @@ class Letters:
             self.y += 1
             self.x = 0
 
+
+      #draws the letter given coordinates of a tile within the grid
       def draw_letter(self, screen, x, y, txt, font):
             textsur = font.render(txt, True, colors_arr[0])
             textrect = textsur.get_rect()
@@ -59,7 +64,7 @@ class Letters:
                         txt = self.str[i][j]
                         self.draw_letter(screen, x, y, txt, font)
 
-      #will be used to draw the letters when we are using animations.worng_animation
+      #will be used to draw the letters when we are using animations.worng_animation, shell.py
       def draw_offset(self, screen, font, offset):
             height, width = self.height, self.width
             for i in range(height):
