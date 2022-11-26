@@ -23,7 +23,7 @@ pip install pygame
 ```
    - [GCC](https://www.geeksforgeeks.org/complete-guide-to-install-c17-in-windows/)
    
-   - Fontul găsit în /asstets/font, pentru al instala e neovie să fie instalate toate .ttf file-urile
+   - Fontul găsit în */asstets/font*, pentru al instala e neovie să fie instalate toate *.ttf* file-urile
 
 -----------------------------------------------------------------------------------------------
 
